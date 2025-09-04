@@ -11,11 +11,11 @@
 <body>
   <!-- Header -->
   <header class="header">
-    <h1>
-      <span class="logo-icon"></span>
-      <span class="brand-text">Sakhi Culture</span>
-    </h1>
-  </header>
+  <div class="header-left">
+    <img src="./logo.jpg" alt="Logo" class="logo-img">
+    <span class="brand-text">Sakhi Culture</span>
+  </div>
+</header>
 
   <div style="height: 16px; background-color: #fff;"></div>
   <!-- Banner Slider -->
@@ -178,7 +178,7 @@
   box-sizing: border-box;
 }
 
-/* Responsive section margins */
+/* Ensure all main sections have margin from page border */
 .header,
 .banner,
 .categories,
@@ -186,28 +186,53 @@
 .footer {
   margin-left: auto;
   margin-right: auto;
-  max-width: 600px;
+  max-width: 1200px;
   width: 100%;
   box-sizing: border-box;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
-@media (min-width: 700px) {
+/* For very large screens */
+@media (min-width: 1400px) {
+  .header,
+  .banner,
+  .categories,
+  .products,
+  .footer {
+    max-width: 1400px;
+  }
+}
+
+/* For tablets */
+@media (max-width: 900px) {
   .header,
   .banner,
   .categories,
   .products,
   .footer {
     max-width: 900px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+  }
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+  .header,
+  .banner,
+  .categories,
+  .products,
+  .footer {
+    margin-left: 4px;
+    margin-right: 4px;
+    max-width: 100%;
   }
 }
 
 /* Classic header styling */
 .header {
-  /* Silk texture + elegant background image + gradient overlay */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.7rem 2rem;
+  min-height: 60px;
   background: 
     linear-gradient(90deg, rgba(225,215,240,0.85) 0%, rgba(248,245,242,0.85) 100%),
     url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'),
@@ -215,18 +240,70 @@
   background-size: cover, cover, auto;
   background-repeat: no-repeat, no-repeat, repeat;
   color: #6d2c91;
-  text-align: center;
-  padding: 3.5rem 0 2.5rem 0;
   box-shadow: 0 4px 16px rgba(141, 68, 173, 0.10);
+  border-top: 2px solid #8e44ad;
   border-bottom: 2px solid #8e44ad;
   animation: slideDown 0.7s;
   letter-spacing: 1.5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive header padding */
+@media (max-width: 900px) {
+  .header {
+    padding: 0.7rem 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    padding: 0.5rem 0.5rem;
+    min-height: 44px;
+  }
+}
+
+/* Header-left: always left aligned, full height */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+/* Logo: left side, margin-right, responsive size */
+.logo-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #8e44ad;
+  background: #fff;
+  margin-right: 1rem;
+  margin-left: 0;
+  transition: height 0.3s, width 0.3s, border-radius 0.3s, margin 0.3s;
+}
+
+@media (min-width: 900px) {
+  .logo-img {
+    height: 80px;
+    width: 80px;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-img {
+    height: 40px;
+    width: 40px;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+  }
 }
 
 .brand-text {
   font-family: 'Playfair Display', 'Great Vibes', 'Georgia', serif;
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   background: linear-gradient(90deg, #8e44ad, #e67e22 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -235,51 +312,44 @@
   margin-left: 0.2em;
 }
 
-.logo-icon {
-  font-size: 3.5rem;
-  vertical-align: middle;
-  margin-right: 0.3em;
-  animation: spinLogo 2s linear infinite;
-}
-
+/* Responsive header font and logo */
 @media (max-width: 600px) {
   .header {
-    font-size: 1.2rem;
-    padding: 2rem 0 1.2rem 0;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    gap: 0.5rem;
   }
-  .brand-text {
-    font-size: 2.2rem;
-  }
-  .logo-icon {
-    font-size: 2.2rem;
-  }
-}
-@keyframes spinLogo {
-  0% { transform: rotate(-10deg);}
-  50% { transform: rotate(10deg);}
-  100% { transform: rotate(-10deg);}
-}
-
-/* Responsive header font */
-@media (max-width: 600px) {
-  .header {
-    font-size: 1.1rem;
-    padding: 1rem 0;
+  .logo-img {
+    height: 40px;
+    width: 40px;
+    margin-right: 0.5rem;
+    border-radius: 5px;
   }
   .brand-text {
     font-size: 1.3rem;
   }
-  .logo-icon {
-    font-size: 1.5rem;
+  .header-left {
+    gap: 0.5rem;
   }
 }
 
-
+/* Add background image to whole webpage */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  background: #fff;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') no-repeat center center fixed;
+  background-size: cover;
   color: #333;
+}
+
+/* Optional: add a semi-transparent overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.85);
+  z-index: -1;
 }
 
 /* Header */
@@ -357,83 +427,89 @@ body {
 
 /* Categories */
 .categories {
-  padding: 1.2rem 0.5rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
   animation: fadeInUp 1s;
 }
 
 .categories h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.7rem;
-  color: #222;
   font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
   font-weight: 700;
+  color: #222;
+  text-align: center;
+  margin-bottom: 0.3rem;
   letter-spacing: 1px;
+  position: relative;
+  display: block;
+  background: none;
+  border: none;
 }
 
-.category-grid {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
-  justify-content: flex-start;
-  scrollbar-width: thin;
-  scrollbar-color: #e1d7f0 #fff;
+/* Gold underline accent below title */
+.categories h2::after,
+.products h2::after {
+  content: "";
+  display: block;
+  margin: 0.4rem auto 0 auto;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: #b49a5a;
+  opacity: 0.8;
 }
 
-.category-card {
-  background: #fff;
-  min-width: 110px;
-  max-width: 130px;
-  height: 130px;
-  border-radius: 18px;
-  box-shadow: 0 2px 8px rgba(141,68,173,0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #333;
-  padding: 0.7rem 0.5rem;
-  cursor: pointer;
-  border: 1px solid #eee;
-  transition: box-shadow 0.2s, transform 0.2s;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.category-card:hover {
-  box-shadow: 0 4px 16px rgba(141,68,173,0.15);
-  transform: scale(1.05);
-  background: #f8f5f2;
-}
-
-/* Hide scroll bar for Webkit browsers */
-.category-grid::-webkit-scrollbar {
-  height: 6px;
-}
-.category-grid::-webkit-scrollbar-thumb {
-  background: #e1d7f0;
-  border-radius: 6px;
-}
-.category-grid::-webkit-scrollbar-track {
-  background: #fff;
-}
-
-/* Responsive: smaller cards on mobile */
+/* Responsive: reduce font size on mobile */
 @media (max-width: 600px) {
-  .category-card {
-    min-width: 90px;
-    max-width: 100px;
-    height: 100px;
-    font-size: 0.95rem;
-    padding: 0.5rem 0.3rem;
+  .categories h2,
+  .products h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
   }
-  .categories h2 {
-    font-size: 1.2rem;
+  .categories h2::after,
+  .products h2::after {
+    width: 28px;
+    height: 2px;
   }
+}
+
+/* Decorative leaf images (optional, if you want to add) */
+.categories {
+  position: relative;
+}
+.products {
+  position: relative;
+}
+.categories::before,
+.categories::after,
+.products::before,
+.products::after {
+  content: "";
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  background: url('https://pngimg.com/uploads/leaves/leaves_PNG3540.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.categories::before {
+  left: 0;
+  top: 0;
+}
+.categories::after {
+  right: 0;
+  top: 0;
+}
+.products::before {
+  left: 0;
+  top: 0;
+}
+.products::after {
+  right: 0;
+  top: 0;
 }
 
 /* Products */
@@ -601,6 +677,68 @@ body {
   font-size: 2rem;
   cursor: pointer;
   border: none;
+}
+
+/* Categories: horizontal centered row that looks like your screenshot */
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.category-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;              /* keep cards in a single row */
+  justify-content: center;
+  gap: 1rem;
+  overflow-x: auto;               /* allow horizontal scroll on very small screens */
+  padding: 0.5rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* hide Firefox scrollbar */
+}
+
+/* hide webkit scrollbar */
+.category-grid::-webkit-scrollbar { display: none; }
+
+.category-card {
+  flex: 0 0 auto;                 /* keep fixed card width */
+  width: 92px;
+  height: 110px;
+  border-radius: 14px;
+  padding: 0.6rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* category thumbnail inside card */
+.category-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* label line-break and ellipsis if long */
+.category-card { white-space: normal; }
+.category-card span, .category-card > text { display:block; }
+
+/* smaller sizes for narrow screens */
+@media (max-width: 420px) {
+  .category-grid { gap: 0.6rem; padding: 0.4rem 8px; }
+  .category-card { width: 80px; height: 100px; padding: 0.5rem; font-size: 0.85rem; }
+  .category-card img { width: 40px; height: 40px; }
 }
 
 /* Responsive Design */
