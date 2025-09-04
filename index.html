@@ -276,11 +276,12 @@
   width: 60px;
   border-radius: 8px;
   object-fit: cover;
-  border: 2px solid #8e44ad;
   background: #fff;
   margin-right: 1rem;
-  margin-left: 0;
-  transition: height 0.3s, width 0.3s, border-radius 0.3s, margin 0.3s;
+  margin-left: 1rem !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add shadow */
+  border: 1px solid #fff; /* Remove border */
+  transition: height 0.3s, width 0.3s, border-radius 0.3s, margin 0.3s, box-shadow 0.3s;
 }
 
 @media (min-width: 900px) {
