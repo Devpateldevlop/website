@@ -57,7 +57,7 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0.7rem 2rem;
   min-height: 60px;
   background: 
@@ -91,6 +91,16 @@
 
 /* Header-left: always left aligned, full height */
 .header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+.header-right {
+    width: auto;
+    justify-content: right;
+    justify-items: right;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -424,7 +434,22 @@ body::before {
   text-align: left;
   width: 100%;
 }
-
+.cart-btn {
+  background: #b49a5a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5em 0.7em;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  align-self: flex-end;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  box-shadow: 0 1px 4px rgba(180,154,90,0.12);
+}
 /* Cart button inside product card - WhatsApp style */
 .product-card .cart-btn {
   background: #b49a5a;
@@ -441,6 +466,11 @@ body::before {
   align-items: center;
   gap: 0.3em;
   box-shadow: 0 1px 4px rgba(180,154,90,0.12);
+}
+.cartbtn-position {
+  width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 .product-card .cart-btn:hover {
   background: #8e44ad;
