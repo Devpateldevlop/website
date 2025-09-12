@@ -17,9 +17,22 @@
     <span class="brand-text">SAKHI CULTURE</span>
   </div>
   <div class="header-right">
-    <button class="cart-btn">Cart</button>
+    <button class="cart-btn" onclick="GoToCart()"></button>
+     <!-- <i class="fa-solid fa-bag-shopping" style="color: #74C0FC;"></i> -->
   </div>
 </header>
+  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+  
+<div id="cartSidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <h2>Your Cart</h2>
+    <div class="cart-items">
+      <p>Item 1</p>
+      <p>Item 2</p>
+      <p>Item 3</p>
+    </div>
+  </div>
+
 
   <div style="height: 16px; background-color: #fff;"></div>
   <!-- Banner Slider -->
@@ -81,7 +94,7 @@
         <div class="desc">Pure kosa silk</div>
         <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+         <button class="cart-btn"></button>
         </div>
    
       </div>
@@ -91,7 +104,7 @@
         <div class="desc">Designed with tissue viscose threads and zari</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn" ></button>
         </div>
       </div>
       <div class="product-card fade-in">
@@ -100,7 +113,7 @@
         <div class="desc">Designed with tissue viscose threads and zari</div>
          <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
       <div class="product-card fade-in">
@@ -109,7 +122,7 @@
         <div class="desc">Designed with tissue viscose threads and zari</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
       <div class="product-card fade-in">
@@ -118,7 +131,7 @@
         <div class="desc">Pure kosa silk</div>
          <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -127,7 +140,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -136,7 +149,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -145,7 +158,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -154,7 +167,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -163,7 +176,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -172,7 +185,7 @@
         <div class="desc">Pure kosa silk</div>
          <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -181,7 +194,7 @@
         <div class="desc">Pure kosa silk</div>
          <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -190,7 +203,7 @@
         <div class="desc">Pure kosa silk</div>
        <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -199,7 +212,7 @@
         <div class="desc">Pure kosa silk</div>
         <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -208,7 +221,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -217,7 +230,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -226,7 +239,7 @@
         <div class="desc">Pure kosa silk</div>
          <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -235,7 +248,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
         <div class="product-card fade-in">
@@ -244,7 +257,7 @@
         <div class="desc">Pure kosa silk</div>
           <div class="cartbtn-position "> 
           <p>₹12,000</p>
-          <button class="cart-btn">Cart</button>
+             <button class="cart-btn"></button>
         </div>
       </div>
       
