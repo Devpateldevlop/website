@@ -123,7 +123,7 @@ function renderCart() {
             <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
             <span>${item.qty}</span>
             <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
-            <button class="remove-btn" onclick="removeItem('${item.name}')">🗑</button>
+            <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
           </div>
         </div>
       </div>`;
