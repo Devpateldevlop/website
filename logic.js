@@ -71,3 +71,63 @@ grid.addEventListener('mousemove', (e) => {
 document.querySelectorAll('.category-card, .category-card img').forEach(el => {
   el.addEventListener('contextmenu', e => e.preventDefault());
 });
+
+
+
+
+let cart = [];
+// Add to Cart
+function addToCart(name, img, price) {
+  const existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, img, price, qty: 1 });
+  }
+  renderCart();
+  GoToCart();
+}
+
+// Update quantity
+function updateQty(name, change) {
+  const item = cart.find(i => i.name === name);
+  if (item) {
+    item.qty += change;
+    if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+  }
+  renderCart();
+}
+
+// Remove item
+function removeItem(name) {
+  cart = cart.filter(i => i.name !== name);
+  renderCart();
+}
+
+// Render Cart
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.img}" alt="">
+        <div class="cart-info">
+          <p class="cart-title">${item.name}</p>
+          <p class="cart-price">₹${item.price}</p>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+            <button class="remove-btn" onclick="removeItem('${item.name}')">🗑</button>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  document.getElementById("cart-total").innerText = "₹" + total;
+}
