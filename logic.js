@@ -1,4 +1,39 @@
-// Banner slider animation
+ async function loadProducts() {
+    try {
+      const response = await fetch("https://sakhiculapi.vercel.app/api/product");
+      const products = await response.json();
+
+      const productGrid = document.getElementById("productGrid");
+      productGrid.innerHTML = ""; // clear old data
+
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card fade-in";
+
+        card.innerHTML = `
+          <img src="${product.images[0]}" >
+          <h3>${product.name}</h3>
+          <div class="desc">${product.description}</div>
+          <div class="cartbtn-position"> 
+            <p>₹${product.price}</p>
+            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images[0]}','${product.price}')"></button>
+          </div>
+        `;
+
+        productGrid.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading products:", error);
+    }
+  }
+
+  loadProducts();// Banner slider animation
+
+
+
+
+
+
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 let currentSlide = 0;
