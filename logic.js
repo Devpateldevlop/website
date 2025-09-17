@@ -11,7 +11,7 @@
         card.className = "product-card fade-in";
 
         card.innerHTML = `
-          <img src="${product.images[0]}" >
+          <img src="${product.images}" >
           <h3>${product.name}</h3>
           <div class="desc">${product.description}</div>
           <div class="cartbtn-position"> 
@@ -26,11 +26,32 @@
       console.error("Error loading products:", error);
     }
   }
+ loadProducts();// Banner slider animation
 
-  loadProducts();// Banner slider animation
+async function loadcategory() {
+    try {
+      const response = await fetch("https://sakhiculapi.vercel.app/api/categories");
+      const categories = await response.json();
 
+      const categoryGrid = document.getElementById("category-grid");
+      categoryGrid.innerHTML = ""; // clear old data
 
+      categories.forEach(category => {
+        const card = document.createElement("div");
+        card.className = "category-card";
 
+        card.innerHTML = 
+        `<img src="${category.image}" alt="Category" >
+        <div>${category.name}</div>
+        `;
+        
+        categoryGrid.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading products:", error);
+    }
+  }
+ loadcategory();
 
 
 
