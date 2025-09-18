@@ -1,16 +1,16 @@
- async function loadProducts() {
-    try {
-      const response = await fetch("https://sakhiculapi.vercel.app/api/product");
-      const products = await response.json();
+async function loadProducts() {
+  try {
+    const response = await fetch("https://sakhiculapi.vercel.app/api/product");
+    const products = await response.json();
 
-      const productGrid = document.getElementById("productGrid");
-      productGrid.innerHTML = ""; // clear old data
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = ""; // clear old data
 
-      products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card fade-in";
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card fade-in";
 
-        card.innerHTML = `
+      card.innerHTML = `
           <img src="${product.images}" >
           <h3>${product.name}</h3>
           <div class="desc">${product.description}</div>
@@ -20,44 +20,85 @@
           </div>
         `;
 
-        productGrid.appendChild(card);
-      });
-    } catch (error) {
-      console.error("Error loading products:", error);
-    }
+      productGrid.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error loading products:", error);
+  } finally {
+    hideLoader();
+}
+}
+window.addEventListener("DOMContentLoaded", initializePage);
+
+
+const loader = document.getElementById("loader");
+const pageContent = document.getElementById("page-content");
+
+function showLoader() {
+  loader.style.display = "flex";
+  // pageContent.style.display = "none";
+}
+
+function hideLoader() {
+  loader.style.display = "none";
+  // pageContent.style.display = "block";
+}
+
+async function initializePage() {
+  showLoader();
+
+  try {
+    // Fetch categories
+    const catResponse = await fetch("https://sakhiculapi.vercel.app/api/categories");
+    const categories = await catResponse.json();
+   
+
+    // Fetch all products
+    const prodResponse = await fetch("https://sakhiculapi.vercel.app/api/product");
+    const products = await prodResponse.json();
+    
+    loadProducts();
+    loadcategory();
+  } catch (err) {
+    console.error("Error initializing page:", err);
+  } finally {
+   hideLoader
   }
- loadProducts();// Banner slider animation
+}
+
+//  loadProducts();
+// Banner slider animation
 
 async function loadcategory() {
-   try {
-  const response = await fetch("https://sakhiculapi.vercel.app/api/categories");
-  const categories = await response.json();
+  try {
+    const response = await fetch("https://sakhiculapi.vercel.app/api/categories");
+    const categories = await response.json();
 
-  const categoryGrid = document.getElementById("category-grid");
-  categoryGrid.innerHTML = ""; // clear old data
+    const categoryGrid = document.getElementById("category-grid");
+    categoryGrid.innerHTML = ""; // clear old data
 
-  categories.forEach(category => {
-    const card = document.createElement("div");
-    card.className = "category-card";
+    categories.forEach(category => {
+      const card = document.createElement("div");
+      card.className = "category-card";
 
-    card.innerHTML = `
+      card.innerHTML = `
       <img src="${category.image}" alt="Category">
       <div>${category.name}</div>
     `;
 
-    // ✅ Add click event
-    card.addEventListener("click", () => {
-      onCategorySelect(category.name); // pass category name
+      // ✅ Add click event
+      card.addEventListener("click", () => {
+        onCategorySelect(category.name); // pass category name
+      });
+
+      categoryGrid.appendChild(card);
     });
+  } catch (error) {
+    console.error("Error loading products:", error);
+  } 
 
-    categoryGrid.appendChild(card);
-  });
-} catch (error) {
-  console.error("Error loading products:", error);
 }
-
-  }
- loadcategory();
+//  loadcategory();
 
 
 
@@ -239,14 +280,14 @@ async function onCategorySelect(selectedCategory) {
     const products = await response.json();
 
     // Bind to SAPUI5 model
-   const productGrid = document.getElementById("productGrid");
-      productGrid.innerHTML = ""; // clear old data
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = ""; // clear old data
 
-      products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card fade-in";
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card fade-in";
 
-        card.innerHTML = `
+      card.innerHTML = `
           <img src="${product.images}" >
           <h3>${product.name}</h3>
           <div class="desc">${product.description}</div>
@@ -256,14 +297,12 @@ async function onCategorySelect(selectedCategory) {
           </div>
         `;
 
-        productGrid.appendChild(card);
-      });
-  } 
+      productGrid.appendChild(card);
+    });
+  }
   catch (err) {
     console.error("Error fetching products:", err);
   }
-
-  sap.ui.core.BusyIndicator.hide();
 }
 
 
