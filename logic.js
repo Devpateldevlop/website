@@ -16,7 +16,7 @@
           <div class="desc">${product.description}</div>
           <div class="cartbtn-position"> 
             <p>₹${product.price}</p>
-            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images[0]}','${product.price}')"></button>
+            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}')"></button>
           </div>
         `;
 
@@ -171,7 +171,7 @@ function renderCart() {
 
     container.innerHTML += `
       <div class="cart-item">
-        <img src="${item.imges}" alt="">
+        <img src="${item.img}" alt="">
         <div class="cart-info">
           <p class="cart-title">${item.name}</p>
           <p class="cart-price">₹${item.price}</p>
