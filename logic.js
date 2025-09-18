@@ -190,57 +190,36 @@ function renderCart() {
 
 
 function placeorder() {
-      if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-      }
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
 
-      // Stylish header
-      let message = "🛒 *New Order !*\n\n";
-      message += "👉 _Order Details:_\n";
+  let message = "🛒 *New Order !*\n\n";
+  message += "👉 _Order Details:_\n";
 
-      // Clear old QR codes
-      let qrContainer = document.getElementById("qrContainer");
-      qrContainer.innerHTML = "";
+  cart.forEach((item, index) => {
+    // Generate QR link for base64 (encoded again for URL safety)
+    let qrLink = `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${encodeURIComponent(item.image)}`;
 
-      // Add cart items
-      cart.forEach((item, index) => {
-        message += `\n${index + 1}. *${item.name}*  
-          📦 Qty: ${item.qty}  
-          💰 Price: ₹${item.price}  
-          🔗 QR below 👇\n`;
+    message += `\n${index + 1}. *${item.name}*  
+       📦 Qty: ${item.qty}  
+       💰 Price: ₹${item.price}  
+       🖼️ QR Link: ${qrLink}\n`;
+  });
 
-        // Create QR div
-        let qrDiv = document.createElement("div");
-        qrDiv.classList.add("qr-item");
-        qrContainer.appendChild(qrDiv);
+  message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
 
-        // Generate QR for Base64 image
-        new QRCode(qrDiv, {
-          text: item.img,  // base64 image as QR
-          width: 150,
-          height: 150,
-        });
-      });
+  let encodedMessage = encodeURIComponent(message);
+  // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
+  let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
 
-      // Footer
-      message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
+  window.open(whatsappUrl, "_blank");
 
-      // Encode message for URL
-      let encodedMessage = encodeURIComponent(message);
-      
-      // WhatsApp link with your number
-      // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
-      let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
-
-      // Redirect to WhatsApp
-      window.open(whatsappUrl, "_blank");
-
-      // Clear cart after sending
-      alert("Order placed successfully!");
-      cart = [];
-      renderCart();
-      closeSidebar();
-    }
+  alert("Order placed successfully!");
+  cart = [];
+  renderCart();
+  closeSidebar();
+}
 
 
