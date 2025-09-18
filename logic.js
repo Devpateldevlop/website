@@ -62,7 +62,7 @@ async function initializePage() {
   } catch (err) {
     console.error("Error initializing page:", err);
   } finally {
-   hideLoader
+   hideLoader();
   }
 }
 
@@ -251,8 +251,7 @@ function placeorder() {
 
     message += `\n${index + 1}. *${item.name}*  
        📦 Qty: ${item.qty}  
-       💰 Price: ₹${item.price}  
-       🖼️ QR Link: ${qrLink}\n`;
+       💰 Price: ₹${item.price} \n`;
   });
 
   message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
