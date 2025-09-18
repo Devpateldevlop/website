@@ -202,7 +202,7 @@ function placeorder() {
   // Add cart items
   cart.forEach((item, index) => {
     message += `\n${index + 1}. *${item.name}*  
-       📦 Qty: ${item.quantity}  
+       📦 Qty: ${item.qty}  
        💰 Price: ₹${item.price}\n`;
   });
 
