@@ -217,7 +217,7 @@ function placeorder() {
 
         // Generate QR for Base64 image
         new QRCode(qrDiv, {
-          text: item.image,  // base64 image as QR
+          text: item.img,  // base64 image as QR
           width: 150,
           height: 150,
         });
