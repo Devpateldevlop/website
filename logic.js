@@ -200,7 +200,7 @@ function placeorder() {
 
   cart.forEach((item, index) => {
     // Generate QR link for base64 (encoded again for URL safety)
-    let qrLink = `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${item.img}`;
+    let qrLink = `${item.img}`;
 
     message += `\n${index + 1}. *${item.name}*  
        📦 Qty: ${item.qty}  
