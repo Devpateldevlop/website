@@ -171,7 +171,7 @@ function renderCart() {
 
     container.innerHTML += `
       <div class="cart-item">
-        <img src="${item.img}" alt="">
+        <img src="${item.imges}" alt="">
         <div class="cart-info">
           <p class="cart-title">${item.name}</p>
           <p class="cart-price">₹${item.price}</p>
