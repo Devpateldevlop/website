@@ -29,27 +29,33 @@
  loadProducts();// Banner slider animation
 
 async function loadcategory() {
-    try {
-      const response = await fetch("https://sakhiculapi.vercel.app/api/categories");
-      const categories = await response.json();
+   try {
+  const response = await fetch("https://sakhiculapi.vercel.app/api/categories");
+  const categories = await response.json();
 
-      const categoryGrid = document.getElementById("category-grid");
-      categoryGrid.innerHTML = ""; // clear old data
+  const categoryGrid = document.getElementById("category-grid");
+  categoryGrid.innerHTML = ""; // clear old data
 
-      categories.forEach(category => {
-        const card = document.createElement("div");
-        card.className = "category-card";
+  categories.forEach(category => {
+    const card = document.createElement("div");
+    card.className = "category-card";
 
-        card.innerHTML = 
-        `<img src="${category.image}" alt="Category" >
-        <div>${category.name}</div>
-        `;
-        
-        categoryGrid.appendChild(card);
-      });
-    } catch (error) {
-      console.error("Error loading products:", error);
-    }
+    card.innerHTML = `
+      <img src="${category.image}" alt="Category">
+      <div>${category.name}</div>
+    `;
+
+    // ✅ Add click event
+    card.addEventListener("click", () => {
+      onCategorySelect(category.name); // pass category name
+    });
+
+    categoryGrid.appendChild(card);
+  });
+} catch (error) {
+  console.error("Error loading products:", error);
+}
+
   }
  loadcategory();
 
@@ -220,6 +226,44 @@ function placeorder() {
   cart = [];
   renderCart();
   closeSidebar();
+}
+
+
+// Event handler when user selects category
+async function onCategorySelect(selectedCategory) {
+
+  try {
+    const response = await fetch(
+      `https://sakhiculapi.vercel.app/api/product?categoryname=${encodeURIComponent(selectedCategory)}`
+    );
+    const products = await response.json();
+
+    // Bind to SAPUI5 model
+   const productGrid = document.getElementById("productGrid");
+      productGrid.innerHTML = ""; // clear old data
+
+      products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card fade-in";
+
+        card.innerHTML = `
+          <img src="${product.images}" >
+          <h3>${product.name}</h3>
+          <div class="desc">${product.description}</div>
+          <div class="cartbtn-position"> 
+            <p>₹${product.price}</p>
+            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}')"></button>
+          </div>
+        `;
+
+        productGrid.appendChild(card);
+      });
+  } 
+  catch (err) {
+    console.error("Error fetching products:", err);
+  }
+
+  sap.ui.core.BusyIndicator.hide();
 }
 
 
