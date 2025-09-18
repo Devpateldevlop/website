@@ -231,7 +231,7 @@ function placeorder() {
       
       // WhatsApp link with your number
       // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
-      let whatsappUrl = `https://wa.me/919601090160?text=${encodedMessage}`;
+      let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
 
       // Redirect to WhatsApp
       window.open(whatsappUrl, "_blank");
