@@ -535,6 +535,8 @@ body::before {
   flex: 1;
   text-align: center;
   font-size: 0.9rem;
+  font-weight: bold;
+  color: #6E1F1F;
   font-family: 'Segoe UI', Arial, sans-serif;
   padding: 0.2rem 0;
   background: none;
@@ -1037,7 +1039,7 @@ body::before {
   margin-top: 500px;
   width: 6px;
   height: 40px;
-  background: linear-gradient(180deg, #498ff7, #1133f3e7);
+  background: linear-gradient(180deg, #804d4d, #7a2929);
   border-radius: 50px;
   animation: flow 1.2s infinite ease-in-out;
 }
