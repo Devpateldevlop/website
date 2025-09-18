@@ -60,16 +60,17 @@
   justify-content: space-between;
   padding: 0.7rem 2rem;
   min-height: 60px;
-  background: 
-    linear-gradient(90deg, rgba(225,215,240,0.85) 0%, rgba(248,245,242,0.85) 100%),
-    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'),
-    url('https://www.transparenttextures.com/patterns/silk.png');
+  /* background:   linear-gradient(90deg, rgba(253, 232, 164, 0.747) 0%, rgba(250, 229, 161, 0.774) 100%); */
+    /* linear-gradient(90deg, rgba(225,215,240,0.85) 0%, rgba(248,245,242,0.85) 100%), */
+    /* url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80'),
+    url('https://www.transparenttextures.com/patterns/silk.png'); */
   background-size: cover, cover, auto;
   background-repeat: no-repeat, no-repeat, repeat;
-  color: #6d2c91;
+  /* color: #6d2c91; */
   box-shadow: 0 4px 16px rgba(141, 68, 173, 0.10);
   /* border-top: 2px solid #8e44ad; */
   /* border-bottom: 2px solid #8e44ad; */
+  border-bottom: 1.5px solid #220230;
   animation: slideDown 0.7s;
   letter-spacing: 1.5px;
   width: 100%;
@@ -117,8 +118,8 @@
   background: #fff;
   margin-right: 1rem;
   margin-left: 1rem !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add shadow */
-  border: 1px solid #fff; /* Remove border */
+  /* box-shadow: 0 4px 16px rgba(0,0,0,0.18);  */
+  /* border: 1px solid #635e5eb9; */
   transition: height 0.3s, width 0.3s, border-radius 0.3s, margin 0.3s, box-shadow 0.3s;
 }
 
@@ -178,7 +179,8 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') no-repeat center center fixed;
+  background: linear-gradient(90deg, rgba(248, 211, 131, 0.85) 0%, rgba(255, 215, 176, 0.925) 100%);
+  /* background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') no-repeat center center fixed; */
   background-size: 100% 100%, cover;
   color: #333;
 }
