@@ -112,8 +112,8 @@
 
 /* Logo: left side, margin-right, responsive size */
 .logo-img {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border-radius: 8px;
   object-fit: cover;
   background: #fff;
