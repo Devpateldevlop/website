@@ -187,3 +187,32 @@ function renderCart() {
 
   document.getElementById("cart-total").innerText = "₹" + total;
 }
+
+
+function placeorder() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Create a message from cart items
+  let message = "Hello, I want to place an order:\n";
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} - ${item.quantity} pcs - ₹${item.price}\n`;
+  });
+
+  // Encode message for URL
+  let encodedMessage = encodeURIComponent(message);
+
+  // WhatsApp link with your number
+  let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
+
+  // Redirect to WhatsApp
+  window.open(whatsappUrl, "_blank");
+
+  // Clear cart after sending
+  alert("Order placed successfully!");
+  cart = [];
+  renderCart();
+  closeSidebar();
+}
