@@ -146,7 +146,8 @@
   font-weight: 700;
   font-size: 1.5rem;
   /* background: rgb(75, 72, 72); */
-  background: linear-gradient(90deg, #bc46ee, #f7933c 80%);
+  /* background: linear-gradient(90deg, #bc46ee, #f7933c 80%); */
+  color: #6E1F1F;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
