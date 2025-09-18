@@ -25,8 +25,10 @@ async function loadProducts() {
   } catch (error) {
     console.error("Error loading products:", error);
   } finally {
-    hideLoader();
-}
+    setTimeout(() => {
+      hideLoader();
+    }, 2000);
+  }
 }
 window.addEventListener("DOMContentLoaded", initializePage);
 
@@ -62,7 +64,9 @@ async function initializePage() {
   } catch (err) {
     console.error("Error initializing page:", err);
   } finally {
-   hideLoader();
+    setTimeout(() => {
+      hideLoader();
+    }, 2000);
   }
 }
 
