@@ -69,8 +69,9 @@
   /* color: #6d2c91; */
   box-shadow: 0 4px 16px rgba(141, 68, 173, 0.10);
   /* border-top: 2px solid #8e44ad; */
+  border-top:  0.5px solid #373538d3;
   /* border-bottom: 2px solid #8e44ad; */
-  border-bottom: 1.5px solid #220230;
+  border-bottom: 0.5px solid #373538d3;
   animation: slideDown 0.7s;
   letter-spacing: 1.5px;
   width: 100%;
