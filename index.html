@@ -18,7 +18,7 @@
     <span class="brand-text">SAKHI CULTURE</span>
   </div>
   <div class="header-right">
-    <button class="cart-btn" onclick="GoToCart()"></button>
+    <!-- <button class="cart-btn" onclick="GoToCart()"></button> -->
      <!-- <i class="fa-solid fa-bag-shopping" style="color: #74C0FC;"></i> -->
   </div>
 </header>
@@ -288,7 +288,7 @@
   </a>
 
   <!-- Bottom navigation bar -->   
-  <nav class="bottom-nav">
+  <!-- <nav class="bottom-nav">
     <button class="nav-btn active">
       <span class="nav-icon"></span>
       <span>Home</span>
@@ -297,8 +297,22 @@
       <span class="nav-icon"></span>
       <span>Categories</span>
     </button>
-    <button class="nav-btn">
+    <button class="nav-btn" onclick="GoToCart()">
       <span class="nav-icon"></span>
+      <span>Cart</span>
+    </button>
+  </nav> -->
+  <nav class="bottom-nav">
+    <button class="nav-btn ">
+      <img src="./home.png" alt="Home" style="width:24px;height:24px;">
+      <span>Home</span>
+    </button>
+    <button class="nav-btn">
+      <img src="./category.png" alt="Categories" style="width:34px;height:34px;">
+      <span>Categories</span>
+    </button>
+    <button class="nav-btn" onclick="GoToCart()">
+      <img src="./cart.png" alt="Cart" style="width:34px;height:34px;">
       <span>Cart</span>
     </button>
   </nav>
