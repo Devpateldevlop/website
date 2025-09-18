@@ -195,11 +195,19 @@ function placeorder() {
     return;
   }
 
-  // Create a message from cart items
-  let message = "Hello, I want to place an order:\n";
+  // Stylish header
+  let message = "🛒 *New Order Received!*\n\n";
+  message += "👉 _Order Details:_\n";
+
+  // Add cart items
   cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} - ${item.quantity} pcs - ₹${item.price}\n`;
+    message += `\n${index + 1}. *${item.name}*  
+       📦 Qty: ${item.quantity}  
+       💰 Price: ₹${item.price}\n`;
   });
+
+  // Footer
+  message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
 
   // Encode message for URL
   let encodedMessage = encodeURIComponent(message);
@@ -216,3 +224,4 @@ function placeorder() {
   renderCart();
   closeSidebar();
 }
+
