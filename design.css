@@ -993,4 +993,9 @@ body::before {
 }
 
 
-
+    #qrContainer {
+      margin-top: 20px;
+    }
+    .qr-item {
+      margin-bottom: 20px;
+    }
