@@ -355,7 +355,7 @@ function renderCart() {
 // }
 
 
-function placeOrderAndShare() {
+function placeorder() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
@@ -445,37 +445,37 @@ function removeItem(index) {
 
 
 
-function placeorder() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
+// function placeorder() {
+//   if (cart.length === 0) {
+//     alert("Your cart is empty!");
+//     return;
+//   }
 
-  let message = "🛒 *New Order !*\n\n";
-  message += "👉 _Order Details:_\n";
+//   let message = "🛒 *New Order !*\n\n";
+//   message += "👉 _Order Details:_\n";
 
-  cart.forEach((item, index) => {
-    // Generate QR link for base64 (encoded again for URL safety)
-    let qrLink = `${item.img}`;
+//   cart.forEach((item, index) => {
+//     // Generate QR link for base64 (encoded again for URL safety)
+//     let qrLink = `${item.img}`;
 
-    message += `\n${index + 1}. *${item.name}*  
-       📦 Qty: ${item.qty}  
-       💰 Price: ₹${item.price} \n`;
-  });
+//     message += `\n${index + 1}. *${item.name}*  
+//        📦 Qty: ${item.qty}  
+//        💰 Price: ₹${item.price} \n`;
+//   });
 
-  message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
+//   message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
 
-  let encodedMessage = encodeURIComponent(message);
-  // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
-  let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
+//   let encodedMessage = encodeURIComponent(message);
+//   // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
+//   let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
 
-  window.open(whatsappUrl, "_blank");
+//   window.open(whatsappUrl, "_blank");
 
-  alert("Order placed successfully!");
-  cart = [];
-  renderCart();
-  closeSidebar();
-}
+//   alert("Order placed successfully!");
+//   cart = [];
+//   renderCart();
+//   closeSidebar();
+// }
 
 
 
