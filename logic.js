@@ -240,7 +240,7 @@ function renderCart() {
   document.getElementById("cart-total").innerText = "₹" + total;
 }
 
-function shareAllProducts() {
+function shareAllProducts(cart) {
   try {
     // Convert all cart items into File objects
     const files = cart.map(item => {
@@ -306,13 +306,13 @@ function placeorder() {
   window.open(whatsappUrl, "_blank");
 
   alert("Order placed successfully!");
+  shareAllProducts()
   cart = [];
   renderCart();
   closeSidebar();
-
-
-  shareAllProducts()
 }
+
+
 
 
 
