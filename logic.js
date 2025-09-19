@@ -367,3 +367,81 @@ function openProductDetails(index) {
     alert(`Product: ${product.name}\nDescription: ${product.desc}\nPrice: ₹${product.price}`);
   }, 1000); // 1 second delay
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let products = []; 
+// let currentPage = 1;
+// const itemsPerPage = 15;
+
+// async function loadProducts() {
+//   try {
+//     const response = await fetch("https://sakhiculapi.vercel.app/api/product");
+//     products = await response.json();
+//     renderProducts();
+//     renderPagination();
+//   } catch (error) {
+//     console.error("Error loading products:", error);
+//   } finally {
+//     setTimeout(() => {
+//       hideLoader();
+//     }, 2000);
+//   }
+// }
+
+// function renderProducts() {
+//   const productGrid = document.getElementById("productGrid");
+//   productGrid.innerHTML = "";
+
+//   // Calculate slice of products for current page
+//   const start = (currentPage - 1) * itemsPerPage;
+//   const end = start + itemsPerPage;
+//   const paginatedProducts = products.slice(start, end);
+
+//   paginatedProducts.forEach(product => {
+//     const card = document.createElement("div");
+//     card.className = "product-card fade-in";
+//     card.innerHTML = `
+//       <img src="${product.images}" alt="${product.name}">
+//       <h3>${product.name}</h3>
+//       <div class="desc">${product.description}</div>
+//       <div class="cartbtn-position"> 
+//         <p>₹${product.price}</p>
+//         <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}')"></button>
+//       </div>
+//     `;
+//     productGrid.appendChild(card);
+//   });
+// }
+
+// function renderPagination() {
+//   const pagination = document.getElementById("pagination");
+//   pagination.innerHTML = "";
+
+//   const totalPages = Math.ceil(products.length / itemsPerPage);
+
+//   for (let i = 1; i <= totalPages; i++) {
+//     const btn = document.createElement("button");
+//     btn.textContent = i;
+//     if (i === currentPage) btn.classList.add("active");
+//     btn.addEventListener("click", () => {
+//       currentPage = i;
+//       renderProducts();
+//       renderPagination();
+//     });
+//     pagination.appendChild(btn);
+//   }
+// }

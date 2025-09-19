@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./design.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
+
+
 <body>
 
 
@@ -35,21 +37,17 @@
     <span class="brand-text">SAKHI CULTURE</span>
   </div>
   <div class="header-right">
-    <!-- <button class="cart-btn" onclick="GoToCart()"></button> -->
+    <button class="cart-btn" onclick="GoToCart()"></button>
      <!-- <i class="fa-solid fa-bag-shopping" style="color: #74C0FC;"></i> -->
+
+       <!-- <button class="cart-btn" onclick="GoToCart()">
+      <img src="./cart.png" alt="Cart" style="width:30px;height:30px;">
+    </button> -->
   </div>
 </header>
   <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
   
-<!-- <div id="cartSidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-    <h2>Your Cart</h2>
-    <div class="cart-items">
-      <p>Item 1</p>
-      <p>Item 2</p>
-      <p>Item 3</p>
-    </div>
-  </div> -->
+
 
 <div id="cartSidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
@@ -65,19 +63,6 @@
 
   <div id="qrContainer"></div>
   <div style="height: 16px; background-color: #fff;"></div>
-  <!-- Banner Slider -->
-  <!-- <section class="banner">
-    <div class="slider">
-      <img class="slide active" src="https://www.mera.website/storage/store/images/sZ7TY8OehZWpVktwkBL1.png" alt="Silk Banner">
-      <img class="slide" src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Silk Saree">
-      <img class="slide" src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f121fe4d91.jpg" alt="Dharmavaram Silk">
-      <div class="slider-controls">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-  </section> -->
 
   <!-- Categories -->
   <section class="categories">
@@ -87,37 +72,26 @@
         <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category" >
         <div>cotton</div> 
       </div>
-      <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category">
-        <div>Linen</div>
-      </div>
-      <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category">
-        <div>Silk</div>
-      </div>
-      <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category" >
-       <div>Banarasi</div>
-      </div>
-      <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category" >
-        <div>Others</div>
-      </div>
-      <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category" >
-       <div> Others </div>
-      </div>
-       <div class="category-card">
-        <img src="https://paramparaethnix.com/images/categories/IMG-6891c9c4d3bd1-1754384836.jpg" alt="Category" >
-       <div> Others </div>
-      </div> -->
+   -->
     </div>
   </section>
 
   <!-- Products -->
-  <section class="products">
+  <!-- <section class="products">
     <h2>Products</h2>
-    <div class="product-grid" id="productGrid">
+    <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section> -->
+
+  <section class="products">
+  <h2>Products</h2>
+  <div class="product-grid" id="productGrid"></div>
+  <!-- <div class="pagination" id="pagination"></div> -->
+</section>
+
+  <!-- <section class="products">
+  <h2>Products</h2>
+  <div class="product-grid" id="productGrid"></div> -->
       <!-- <div class="product-card fade-in">
         <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
         <h3>Model silk saree</h3>
@@ -137,169 +111,12 @@
              <button class="cart-btn" onclick="addToCart()"></button>
         </div>
       </div>
-      <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Kota cotton</h3>
-        <div class="desc">Designed with tissue viscose threads and zari</div>
-         <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-      <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Banarasi silk</h3>
-        <div class="desc">Designed with tissue viscose threads and zari</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-      <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-         <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn" onclick="addToCart()"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-         <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-         <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-       <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-        <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-         <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div>
-      </div>
-        <div class="product-card fade-in">
-        <img src="https://paramparaethnix.com/storage/images/6890dc250e75c-689f25c7b5615.jpg" alt="Product">
-        <h3>Saree</h3>
-        <div class="desc">Pure kosa silk</div>
-          <div class="cartbtn-position "> 
-          <p>₹12,000</p>
-             <button class="cart-btn"></button>
-        </div> -->
-      </div>
-      
+      -->
+      <!-- </div>
     </div>
-  </section>
+  </section> -->
 
 
-
-  <!-- Footer -->
-  <!-- <footer class="footer">
-    <p>© 2025 Silk Store. All rights reserved.</p>
-  </footer> -->
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/919601091060" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
@@ -307,20 +124,7 @@
   </a>
 
   <!-- Bottom navigation bar -->   
-  <!-- <nav class="bottom-nav">
-    <button class="nav-btn active">
-      <span class="nav-icon"></span>
-      <span>Home</span>
-    </button>
-    <button class="nav-btn">
-      <span class="nav-icon"></span>
-      <span>Categories</span>
-    </button>
-    <button class="nav-btn" onclick="GoToCart()">
-      <span class="nav-icon"></span>
-      <span>Cart</span>
-    </button>
-  </nav> -->
+ 
   <!-- <nav class="bottom-nav">
     <button class="nav-btn ">
       <img src="./home.png" alt="Home" style="width:20px;height:20px;margin-bottom: 10px;">
