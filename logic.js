@@ -351,3 +351,19 @@ async function onCategorySelect(selectedCategory) {
 }
 
 
+
+
+
+function openProductDetails(index) {
+  // Show loader
+  document.getElementById("loader").style.display = "flex";
+
+  // Simulate loading delay
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+
+    // Show product details (you can replace this with a modal or new page)
+    const product = products[index];
+    alert(`Product: ${product.name}\nDescription: ${product.desc}\nPrice: ₹${product.price}`);
+  }, 1000); // 1 second delay
+}
