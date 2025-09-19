@@ -239,31 +239,41 @@ function renderCart() {
 
   document.getElementById("cart-total").innerText = "₹" + total;
 }
-function shareProduct(name, base64Image) {
-  const byteString = atob(base64Image.split(',')[1]);
-  const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
 
-  const ab = new ArrayBuffer(byteString.length);
-  const ia = new Uint8Array(ab);
-  for (let i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
+function shareAllProducts() {
+  try {
+    // Convert all cart items into File objects
+    const files = cart.map(item => {
+      const byteString = atob(item.img.split(',')[1]);
+      const mimeString = item.img.split(',')[0].split(':')[1].split(';')[0];
 
-  const blob = new Blob([ab], { type: mimeString });
-  const file = new File([blob], 'product.jpg', { type: mimeString });
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
 
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    navigator.share({
-      title: name,
-      text: `Check out this product: ${name}`,
-      files: [file]
-    })
-    .then(() => console.log('Shared successfully'))
-    .catch((error) => console.error('Error sharing', error));
-  } else {
-    alert("Sharing not supported or file too large");
+      const blob = new Blob([ab], { type: mimeString });
+      return new File([blob], `${item.name}.jpg`, { type: mimeString });
+    });
+
+    if (navigator.canShare && navigator.canShare({ files })) {
+      navigator.share({
+        title: "My Cart Products",
+        text: "Check out the products in my cart!",
+        files: files
+      })
+      .then(() => console.log('All products shared successfully'))
+      .catch((error) => console.error('Error sharing', error));
+    } else {
+      alert("Sharing not supported or files too large on this device/browser");
+    }
+
+  } catch (err) {
+    console.error("Error processing share", err);
   }
 }
+
 
 
 
@@ -299,6 +309,9 @@ function placeorder() {
   cart = [];
   renderCart();
   closeSidebar();
+
+  
+  shareAllProducts()
 }
 
 
