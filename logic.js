@@ -241,11 +241,13 @@ function renderCart() {
   document.getElementById("cart-total").innerText = "₹" + total;
 }
 function shareProduct(name, imageUrl) {
+  const fullImageUrl = window.location.origin + imageUrl; // makes absolute URL
+
   if (navigator.share) {
     navigator.share({
       title: name,
       text: `Check out this product: ${name}`,
-      url: imageUrl // 
+      url: fullImageUrl
     })
     .then(() => console.log('Shared successfully'))
     .catch((error) => console.error('Error sharing', error));
@@ -253,6 +255,7 @@ function shareProduct(name, imageUrl) {
     alert("Sharing not supported in this browser");
   }
 }
+
 
 
 
