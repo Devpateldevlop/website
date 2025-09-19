@@ -239,120 +239,34 @@ function renderCart() {
 
   document.getElementById("cart-total").innerText = "₹" + total;
 }
+function shareProduct(name, base64Image) {
+  const byteString = atob(base64Image.split(',')[1]);
+  const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
 
-// function shareProduct(name, base64Image) {
-//   const byteString = atob(base64Image.split(',')[1]);
-//   const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
 
-//   const ab = new ArrayBuffer(byteString.length);
-//   const ia = new Uint8Array(ab);
-//   for (let i = 0; i < byteString.length; i++) {
-//     ia[i] = byteString.charCodeAt(i);
-//   }
+  const blob = new Blob([ab], { type: mimeString });
+  const file = new File([blob], 'product.jpg', { type: mimeString });
 
-//   const blob = new Blob([ab], { type: mimeString });
-//   const file = new File([blob], 'product.jpg', { type: mimeString });
-
-//   if (navigator.canShare && navigator.canShare({ files: [file] })) {
-//     navigator.share({
-//       title: name,
-//       text: `Check out this product: ${name}`,
-//       files: [file]
-//     })
-//     .then(() => console.log('Shared successfully'))
-//     .catch((error) => console.error('Error sharing', error));
-//   } else {
-//     alert("Sharing not supported or file too large");
-//   }
-// }
-
-// Example cart array
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    navigator.share({
+      title: name,
+      text: `Check out this product: ${name}`,
+      files: [file]
+    })
+    .then(() => console.log('Shared successfully'))
+    .catch((error) => console.error('Error sharing', error));
+  } else {
+    alert("Sharing not supported or file too large");
+  }
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Render cart items
-// function renderCart() {
-//   const container = document.getElementById("cart-items");
-//   container.innerHTML = "";
-
-//   cart.forEach((item, index) => {
-//     container.innerHTML += `
-//       <div class="cart-item">
-//         <img src="${item.img}" alt="">
-//         <div class="cart-info">
-//           <p class="cart-title">${item.name}</p>
-//           <p class="cart-price">₹${item.price}</p>
-//           <div class="qty-controls">
-//             <button class="qty-btn" onclick="updateQty(${index}, -1)">−</button>
-//             <span>${item.qty}</span>
-//             <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
-//             <button class="remove-btn" onclick="removeItem(${index})">✕</button>
-//             <button class="share-btn" data-index="${index}">Share</button>
-//           </div>
-//         </div>
-//       </div>`;
-//   });
-
-//   document.getElementById("cart-total").innerText = "₹" + cart.reduce((a,b)=>a+b.price*b.qty,0);
-
-//   // Attach click handlers for sharing
-//   document.querySelectorAll('.share-btn').forEach(btn => {
-//     btn.addEventListener('click', () => {
-//       const idx = btn.dataset.index;
-//       shareProduct(cart[idx].name, cart[idx].img);
-//     });
-//   });
-// }
-
-// // Share product using Web Share API
-// function shareProduct(name, base64Image) {
-//   try {
-//     // Convert base64 to Blob
-//     const byteString = atob(base64Image.split(',')[1]);
-//     const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
-
-//     const ab = new ArrayBuffer(byteString.length);
-//     const ia = new Uint8Array(ab);
-//     for (let i = 0; i < byteString.length; i++) {
-//       ia[i] = byteString.charCodeAt(i);
-//     }
-
-//     const blob = new Blob([ab], { type: mimeString });
-//     const file = new File([blob], 'product.jpg', { type: mimeString });
-
-//     if (navigator.canShare && navigator.canShare({ files: [file] })) {
-//       navigator.share({
-//         title: name,
-//         text: `Check out this product: ${name}`,
-//         files: [file]
-//       })
-//       .then(() => console.log('Shared successfully'))
-//       .catch((error) => console.error('Error sharing', error));
-//     } else {
-//       alert("Sharing not supported or file too large on this device/browser");
-//     }
-//   } catch (err) {
-//     console.error("Error processing share", err);
-//   }
-// }
 
 
 function placeorder() {
@@ -361,11 +275,13 @@ function placeorder() {
     return;
   }
 
-  // --- Step 1: Prepare and send WhatsApp message ---
-  let message = "🛒 *New Order!*\n\n";
+  let message = "🛒 *New Order !*\n\n";
   message += "👉 _Order Details:_\n";
 
   cart.forEach((item, index) => {
+    // Generate QR link for base64 (encoded again for URL safety)
+    let qrLink = `${item.img}`;
+
     message += `\n${index + 1}. *${item.name}*  
        📦 Qty: ${item.qty}  
        💰 Price: ₹${item.price} \n`;
@@ -374,126 +290,16 @@ function placeorder() {
   message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
 
   let encodedMessage = encodeURIComponent(message);
+  // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
   let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
 
-  // Open WhatsApp link first
   window.open(whatsappUrl, "_blank");
 
-  // --- Step 2: Share images using Web Share API ---
-  // Use a small delay to make sure WhatsApp window opens first
-
-    cart.forEach((item) => {
-      try {
-        const byteString = atob(item.img.split(',')[1]);
-        const mimeString = item.img.split(',')[0].split(':')[1].split(';')[0];
-
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-          ia[i] = byteString.charCodeAt(i);
-        }
-
-        const blob = new Blob([ab], { type: mimeString });
-        const file = new File([blob], 'product.jpg', { type: mimeString });
-
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator.share({
-            title: item.name,
-            text: `Check out this product: ${item.name}`,
-            files: [file]
-          })
-          .then(() => console.log('Shared successfully'))
-          .catch((error) => console.error('Error sharing', error));
-        } else {
-          console.warn("Sharing not supported or file too large for:", item.name);
-        }
-      } catch (err) {
-        console.error("Error processing share for", item.name, err);
-      }
-    });
- // small delay (500ms) to let WhatsApp open
-
-  // --- Step 3: Clear cart ---
+  alert("Order placed successfully!");
   cart = [];
   renderCart();
   closeSidebar();
-
-  alert("Order placed successfully and share triggered!");
 }
-
-
-
-
-// Dummy functions for qty update and remove
-function updateQty(index, delta) {
-  cart[index].qty += delta;
-  if (cart[index].qty < 1) cart[index].qty = 1;
-  renderCart();
-}
-
-
-
-
-function removeItem(index) {
-  cart.splice(index,1);
-  renderCart();
-}
-
-// Initial render
-// renderCart();
-
-
-
-
-// function placeorder() {
-//   if (cart.length === 0) {
-//     alert("Your cart is empty!");
-//     return;
-//   }
-
-//   let message = "🛒 *New Order !*\n\n";
-//   message += "👉 _Order Details:_\n";
-
-//   cart.forEach((item, index) => {
-//     // Generate QR link for base64 (encoded again for URL safety)
-//     let qrLink = `${item.img}`;
-
-//     message += `\n${index + 1}. *${item.name}*  
-//        📦 Qty: ${item.qty}  
-//        💰 Price: ₹${item.price} \n`;
-//   });
-
-//   message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
-
-//   let encodedMessage = encodeURIComponent(message);
-//   // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
-//   let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
-
-//   window.open(whatsappUrl, "_blank");
-
-//   alert("Order placed successfully!");
-//   cart = [];
-//   renderCart();
-//   closeSidebar();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Event handler when user selects category
