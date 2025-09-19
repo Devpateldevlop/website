@@ -302,6 +302,17 @@ function placeorder() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 // Event handler when user selects category
 async function onCategorySelect(selectedCategory) {
 
