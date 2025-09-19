@@ -231,6 +231,8 @@ function renderCart() {
             <span>${item.qty}</span>
             <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
             <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
+            <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
+
           </div>
         </div>
       </div>`;
@@ -238,6 +240,20 @@ function renderCart() {
 
   document.getElementById("cart-total").innerText = "₹" + total;
 }
+function shareProduct(name, imageUrl) {
+  if (navigator.share) {
+    navigator.share({
+      title: name,
+      text: `Check out this product: ${name}`,
+      url: imageUrl // 
+    })
+    .then(() => console.log('Shared successfully'))
+    .catch((error) => console.error('Error sharing', error));
+  } else {
+    alert("Sharing not supported in this browser");
+  }
+}
+
 
 
 function placeorder() {
