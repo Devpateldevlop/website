@@ -240,7 +240,7 @@ function renderCart() {
   document.getElementById("cart-total").innerText = "₹" + total;
 }
 
-function shareAllProducts(cart) {
+function shareAllProducts() {
   try {
     // Convert all cart items into File objects
     const files = cart.map(item => {
