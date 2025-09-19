@@ -240,21 +240,33 @@ function renderCart() {
 
   document.getElementById("cart-total").innerText = "₹" + total;
 }
-function shareProduct(name, imageUrl) {
-  const fullImageUrl = window.location.origin + imageUrl; // makes absolute URL
+function shareProduct(name, base64Image) {
+  // Convert base64 to blob
+  const byteString = atob(base64Image.split(',')[1]);
+  const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
 
-  if (navigator.share) {
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+
+  const blob = new Blob([ab], { type: mimeString });
+  const file = new File([blob], 'product.jpg', { type: mimeString });
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
     navigator.share({
       title: name,
       text: `Check out this product: ${name}`,
-      url: fullImageUrl
+      files: [file]
     })
     .then(() => console.log('Shared successfully'))
     .catch((error) => console.error('Error sharing', error));
   } else {
-    alert("Sharing not supported in this browser");
+    alert("Sharing not supported or file too large");
   }
 }
+
 
 
 
