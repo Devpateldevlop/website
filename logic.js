@@ -211,15 +211,82 @@ function removeItem(name) {
   renderCart();
 }
 
-// Render Cart
+// function renderCart() {
+//   const container = document.getElementById("cart-items");
+//   container.innerHTML = "";
+//   let total = 0;
+
+//   cart.forEach(item => {
+//     total += item.price * item.qty;
+
+//     container.innerHTML += `
+//       <div class="cart-item">
+//         <img src="${item.img}" alt="">
+//         <div class="cart-info">
+//           <p class="cart-title">${item.name}</p>
+//           <p class="cart-price">₹${item.price}</p>
+//           <div class="qty-controls">
+//             <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
+//             <span>${item.qty}</span>
+//             <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+//             <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
+//             <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
+
+//           </div>
+//         </div>
+//       </div>`;
+//   });
+
+//   document.getElementById("cart-total").innerText = "₹" + total;
+// }
+// function shareProduct(name, base64Image) {
+//   const byteString = atob(base64Image.split(',')[1]);
+//   const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
+
+//   const ab = new ArrayBuffer(byteString.length);
+//   const ia = new Uint8Array(ab);
+//   for (let i = 0; i < byteString.length; i++) {
+//     ia[i] = byteString.charCodeAt(i);
+//   }
+
+//   const blob = new Blob([ab], { type: mimeString });
+//   const file = new File([blob], 'product.jpg', { type: mimeString });
+
+//   if (navigator.canShare && navigator.canShare({ files: [file] })) {
+//     navigator.share({
+//       title: name,
+//       text: `Check out this product: ${name}`,
+//       files: [file]
+//     })
+//     .then(() => console.log('Shared successfully'))
+//     .catch((error) => console.error('Error sharing', error));
+//   } else {
+//     alert("Sharing not supported or file too large");
+//   }
+// }
+
+// Example cart array
+let cart = [
+  {
+    name: "Product 1",
+    price: 500,
+    qty: 2,
+    img: "data:image/jpeg;base64,/9j/4QBeRXhpZ..." // your base64 string
+  },
+  {
+    name: "Product 2",
+    price: 300,
+    qty: 1,
+    img: "data:image/png;base64,iVBORw0KGgo..." // another base64
+  }
+];
+
+// Render cart items
 function renderCart() {
   const container = document.getElementById("cart-items");
   container.innerHTML = "";
-  let total = 0;
 
-  cart.forEach(item => {
-    total += item.price * item.qty;
-
+  cart.forEach((item, index) => {
     container.innerHTML += `
       <div class="cart-item">
         <img src="${item.img}" alt="">
@@ -227,46 +294,72 @@ function renderCart() {
           <p class="cart-title">${item.name}</p>
           <p class="cart-price">₹${item.price}</p>
           <div class="qty-controls">
-            <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
+            <button class="qty-btn" onclick="updateQty(${index}, -1)">−</button>
             <span>${item.qty}</span>
-            <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
-            <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
-            <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
-
+            <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
+            <button class="remove-btn" onclick="removeItem(${index})">✕</button>
+            <button class="share-btn" data-index="${index}">Share</button>
           </div>
         </div>
       </div>`;
   });
 
-  document.getElementById("cart-total").innerText = "₹" + total;
+  document.getElementById("cart-total").innerText = "₹" + cart.reduce((a,b)=>a+b.price*b.qty,0);
+
+  // Attach click handlers for sharing
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.index;
+      shareProduct(cart[idx].name, cart[idx].img);
+    });
+  });
 }
+
+// Share product using Web Share API
 function shareProduct(name, base64Image) {
-  // Convert base64 to blob
-  const byteString = atob(base64Image.split(',')[1]);
-  const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
+  try {
+    // Convert base64 to Blob
+    const byteString = atob(base64Image.split(',')[1]);
+    const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
 
-  const ab = new ArrayBuffer(byteString.length);
-  const ia = new Uint8Array(ab);
-  for (let i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
 
-  const blob = new Blob([ab], { type: mimeString });
-  const file = new File([blob], 'product.jpg', { type: mimeString });
+    const blob = new Blob([ab], { type: mimeString });
+    const file = new File([blob], 'product.jpg', { type: mimeString });
 
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    navigator.share({
-      title: name,
-      text: `Check out this product: ${name}`,
-      files: [file]
-    })
-    .then(() => console.log('Shared successfully'))
-    .catch((error) => console.error('Error sharing', error));
-  } else {
-    alert("Sharing not supported or file too large");
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({
+        title: name,
+        text: `Check out this product: ${name}`,
+        files: [file]
+      })
+      .then(() => console.log('Shared successfully'))
+      .catch((error) => console.error('Error sharing', error));
+    } else {
+      alert("Sharing not supported or file too large on this device/browser");
+    }
+  } catch (err) {
+    console.error("Error processing share", err);
   }
 }
 
+// Dummy functions for qty update and remove
+function updateQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty < 1) cart[index].qty = 1;
+  renderCart();
+}
+function removeItem(index) {
+  cart.splice(index,1);
+  renderCart();
+}
+
+// Initial render
+// renderCart();
 
 
 
