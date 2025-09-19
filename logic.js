@@ -381,7 +381,7 @@ function placeorder() {
 
   // --- Step 2: Share images using Web Share API ---
   // Use a small delay to make sure WhatsApp window opens first
-  setTimeout(() => {
+
     cart.forEach((item) => {
       try {
         const byteString = atob(item.img.split(',')[1]);
@@ -411,7 +411,7 @@ function placeorder() {
         console.error("Error processing share for", item.name, err);
       }
     });
-  }, 500); // small delay (500ms) to let WhatsApp open
+ // small delay (500ms) to let WhatsApp open
 
   // --- Step 3: Clear cart ---
   cart = [];
