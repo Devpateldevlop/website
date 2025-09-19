@@ -211,34 +211,35 @@ function removeItem(name) {
   renderCart();
 }
 
-// function renderCart() {
-//   const container = document.getElementById("cart-items");
-//   container.innerHTML = "";
-//   let total = 0;
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+  let total = 0;
 
-//   cart.forEach(item => {
-//     total += item.price * item.qty;
+  cart.forEach(item => {
+    total += item.price * item.qty;
 
-//     container.innerHTML += `
-//       <div class="cart-item">
-//         <img src="${item.img}" alt="">
-//         <div class="cart-info">
-//           <p class="cart-title">${item.name}</p>
-//           <p class="cart-price">₹${item.price}</p>
-//           <div class="qty-controls">
-//             <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
-//             <span>${item.qty}</span>
-//             <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
-//             <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
-//             <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
+    container.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.img}" alt="">
+        <div class="cart-info">
+          <p class="cart-title">${item.name}</p>
+          <p class="cart-price">₹${item.price}</p>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
+            <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
+            <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
 
-//           </div>
-//         </div>
-//       </div>`;
-//   });
+          </div>
+        </div>
+      </div>`;
+  });
 
-//   document.getElementById("cart-total").innerText = "₹" + total;
-// }
+  document.getElementById("cart-total").innerText = "₹" + total;
+}
+
 // function shareProduct(name, base64Image) {
 //   const byteString = atob(base64Image.split(',')[1]);
 //   const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
