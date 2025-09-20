@@ -230,7 +230,7 @@ function renderCart() {
             <span>${item.qty}</span>
             <button class="qty-btn" onclick="updateQty('${item.name}', 1)">+</button>
             <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
-            <button onclick="shareProduct('${item.name}', '${item.img}')">Share</button>
+            <button class="share-btn" onclick="shareProduct('${item.name}', '${item.img}')"></button>
 
           </div>
         </div>
