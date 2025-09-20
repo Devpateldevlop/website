@@ -9,7 +9,11 @@ async function loadProducts() {
     products.forEach(product => {
       const card = document.createElement("div");
       card.className = "product-card fade-in";
-
+      card.setAttribute(
+        "onclick",
+        `openProductDetail('${product.name}', '${product.description}', '${product.price}', '${product.images}')`
+      );
+    
       card.innerHTML = `
           <img src="${product.images}" >
           <h3>${product.name}</h3>
@@ -371,7 +375,18 @@ function openProductDetails(index) {
 }
 
 
+ function openProductDetail(name, desc, price, img) {
+      document.getElementById("detailName").innerText = name;
+      document.getElementById("detailDescription").innerText = desc;
+      document.getElementById("detailPrice").innerText = "₹" + price;
+      document.getElementById("detailImage").src = img;
 
+      document.getElementById("bottomSheet").classList.add("open");
+    }
+
+    function closeProductDetail() {
+      document.getElementById("bottomSheet").classList.remove("open");
+    }
 
 
 
