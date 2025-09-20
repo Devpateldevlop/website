@@ -954,7 +954,7 @@ body::before {
 }
 
 .cart-title { font-size: 15px; font-weight: bold; margin-left: 20px; }
-.cart-price { color: #376bf8; font-size: 14px; margin-left: 20px; margin-bottom: 5px;  font-weight: bold; }
+.cart-price { color: #376bf8; font-size: 14px; margin-left: 20px; margin-bottom: 5px; margin-top: 5px;  font-weight: bold; }
 
 /* Quantity Controls */
 .qty-controls {
@@ -975,6 +975,7 @@ margin-left: 100px;
   padding: 3px 8px;
   border-radius: 10px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .remove-btn {
@@ -1013,12 +1014,14 @@ margin-left: 100px;
   background: #fff;
   padding: 12px;
   border-top: 1px solid #eee;
+  justify-content: space-around;
 }
 
 .order-btn {
   width: 100%;
   background: #c49a6c;
   color: #fff;
+  margin-top: 15px;
   padding: 10px;
   border-radius: 6px;
   border: none;
