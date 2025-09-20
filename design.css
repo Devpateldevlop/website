@@ -950,6 +950,7 @@ body::before {
 .cart-info {
   justify-content: space-between;
   flex: 1;
+  width: 100%;
 }
 
 .cart-title { font-size: 15px; font-weight: bold; margin-left: 20px; }

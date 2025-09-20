@@ -189,7 +189,7 @@ function addToCart(name, img, price, _id) {
   if (existing) {
     existing.qty++;
   } else {
-    cart.push({ name, img, price, qty: 1 });
+    cart.push({ name, img, price, qty: 1, _id });
   }
   renderCart();
   GoToCart();
@@ -223,10 +223,10 @@ function renderCart() {
       <div class="cart-item">
         <img src="${item.img}" alt="">
         <div class="cart-info">
-        <div >
+   
           <p class="cart-title">${item.name}</p>
           <p class="cart-price">₹${item.price}</p>
-          </div>
+         
           <div class="qty-controls">
             <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
             <span>${item.qty}</span>
