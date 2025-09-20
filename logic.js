@@ -11,7 +11,7 @@ async function loadProducts() {
       card.className = "product-card fade-in";
       card.setAttribute(
         "onclick",
-        `openProductDetail('${product.name}', '${product.description}', '${product.price}', '${product.images}')`
+        `openProductDetail('${product.name}', '${product.description}', '${product.price}', '${product.images}','${product._id}','${product.size}','${product.length}')`
       );
     
       card.innerHTML = `
@@ -374,15 +374,38 @@ function openProductDetails(index) {
   }, 1000); // 1 second delay
 }
 
-
- function openProductDetail(name, desc, price, img) {
+let selectedProduct = null;
+ function openProductDetail(name, desc, price, img ,_id ,size,length) {
       document.getElementById("detailName").innerText = name;
       document.getElementById("detailDescription").innerText = desc;
+      document.getElementById("detailsize").innerText = size;
+      document.getElementById("detaillength").innerText = length;
       document.getElementById("detailPrice").innerText = "₹" + price;
       document.getElementById("detailImage").src = img;
 
       document.getElementById("bottomSheet").classList.add("open");
+      var name = name;
+      var images = img;
+      var price = price;
+      var _id = _id;
+
+     selectedProduct = { name, desc, price, img, _id };
     }
+
+    function addToCartFromDetail() {
+  if (selectedProduct) {
+    console.log("Using stored product:", selectedProduct);
+    // call your addToCart logic
+    addToCart(
+      selectedProduct.name,
+      selectedProduct.img,
+      selectedProduct.price,
+      selectedProduct.id
+    );
+  } else {
+    console.warn("No product selected!");
+  }
+}
 
     function closeProductDetail() {
       document.getElementById("bottomSheet").classList.remove("open");
