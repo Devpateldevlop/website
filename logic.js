@@ -384,10 +384,7 @@ let selectedProduct = null;
       document.getElementById("detailImage").src = img;
 
       document.getElementById("bottomSheet").classList.add("open");
-      var name = name;
-      var images = img;
-      var price = price;
-      var _id = _id;
+      
 
      selectedProduct = { name, desc, price, img, _id };
     }
