@@ -223,8 +223,10 @@ function renderCart() {
       <div class="cart-item">
         <img src="${item.img}" alt="">
         <div class="cart-info">
+        <div >
           <p class="cart-title">${item.name}</p>
           <p class="cart-price">₹${item.price}</p>
+          </div>
           <div class="qty-controls">
             <button class="qty-btn" onclick="updateQty('${item.name}', -1)">−</button>
             <span>${item.qty}</span>
