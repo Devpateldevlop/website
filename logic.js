@@ -16,7 +16,7 @@ async function loadProducts() {
           <div class="desc">${product.description}</div>
           <div class="cartbtn-position"> 
             <p>₹${product.price}</p>
-            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}')"></button>
+            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}','${product._id}')"></button>
           </div>
         `;
 
@@ -184,8 +184,8 @@ document.querySelectorAll('.category-card, .category-card img').forEach(el => {
 
 let cart = [];
 // Add to Cart
-function addToCart(name, img, price) {
-  const existing = cart.find(item => item.name === name);
+function addToCart(name, img, price, _id) {
+  const existing = cart.find(item => item._id === _id);
   if (existing) {
     existing.qty++;
   } else {
@@ -338,7 +338,7 @@ async function onCategorySelect(selectedCategory) {
           <div class="desc">${product.description}</div>
           <div class="cartbtn-position"> 
             <p>₹${product.price}</p>
-            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}')"></button>
+            <button class="cart-btn" onclick="addToCart('${product.name}','${product.images}','${product.price}','${product._id}')"></button>
           </div>
         `;
 

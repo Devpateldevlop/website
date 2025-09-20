@@ -845,9 +845,10 @@ body::before {
   border-radius: 10px;
   top: 0;
   right: 0;
-  background-color: #ffffffe0;
+  background-color: #ffffff;
   box-shadow: -2px 0 5px rgba(0,0,0,0.3);
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: scroll;
   transition: width 0.4s ease;
   padding-top: 60px;
   z-index: 10000;
