@@ -1,30 +1,25 @@
 async function loadBanner() {
   try {
-    const res = await fetch("https://sakhiculapi.vercel.app/api/banner"); // replace with your API
+    const res = await fetch("https://sakhiculapi.vercel.app/api/banner");
     const banners = await res.json();
 
     const bannerEl = document.getElementById("banner");
     const slidesEl = document.getElementById("slides");
     const dotsEl = document.getElementById("dots");
 
-    // If no images, hide banner
     if (!banners || banners.length === 0) {
       bannerEl.style.display = "none";
       return;
     }
 
-    // Otherwise, show banner
     bannerEl.style.display = "block";
 
-    // Insert slides dynamically
     banners.forEach((banner, i) => {
       const slide = document.createElement("div");
       slide.className = "slide";
-      if (i === 0) slide.classList.add("active");
       slide.innerHTML = `<img src="${banner.image}" alt="Banner ${i+1}">`;
       slidesEl.appendChild(slide);
 
-      // Create dot
       const dot = document.createElement("button");
       if (i === 0) dot.classList.add("active");
       dot.addEventListener("click", () => showSlide(i));
@@ -35,39 +30,25 @@ async function loadBanner() {
     const dots = dotsEl.querySelectorAll("button");
     let index = 0;
 
-    // function showSlide(i) {
-    //   index = i;
-    //   const offset = -i * 100;
-    //   slidesEl.style.transform = `translateX(${offset}%)`;
-
-    //   dots.forEach(dot => dot.classList.remove("active"));
-    //   dots[i].classList.add("active");
-    // }
-
     function showSlide(i) {
-  index = i;
-  slidesEl.style.transform = `translateX(-${i * 100}%)`;
-
-  dots.forEach(dot => dot.classList.remove("active"));
-  dots[i].classList.add("active");
-}
-
+      index = i;
+      slidesEl.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[i].classList.add("active");
+    }
 
     function autoSlide() {
       index = (index + 1) % slides.length;
       showSlide(index);
     }
 
-    setInterval(autoSlide, 4000); // every 4s
+    setInterval(autoSlide, 4000);
 
   } catch (err) {
     console.error("Error loading banners:", err);
     document.getElementById("banner").style.display = "none";
   }
 }
-
-// Call on page load
-loadBanner();
 
 
 
@@ -143,6 +124,8 @@ async function initializePage() {
     
     loadProducts();
     loadcategory();
+    loadBanner();
+    
   } catch (err) {
     console.error("Error initializing page:", err);
   } finally {
