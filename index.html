@@ -14,6 +14,7 @@
 
 <body>
 
+  
 
 <!-- Full-page loader -->
  <div id="loader">
@@ -64,6 +65,15 @@
   <div id="qrContainer"></div>
   <div style="height: 16px; background-color: #fff;"></div>
 
+
+  <div class="banner" id="banner" style="display:none;">
+  <div class="slides" id="slides"></div>
+
+  <div class="controls">
+    <div class="dots" id="dots"></div>
+  </div>
+</div>
+
   <!-- Categories -->
   <section class="categories">
     <h2>Categories</h2>
@@ -82,6 +92,8 @@
     <div class="product-grid" id="productGrid"></div>
     </div>
   </section> -->
+
+
 
   <section class="products">
   <h2>Products</h2>
@@ -135,7 +147,8 @@
     border-radius: 8px;">
     <p id="detailDescription"></p>
     <p id="detailCategory"></p>
-    <p id
+    <p id="detailSize"></p>
+    <p id="detailLength"></p>
     <h4 id="detailPrice"></h4>
     <button class="order-btn" onclick="addToCartFromDetail()">Add to Cart</button>
   </div>

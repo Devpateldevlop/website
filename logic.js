@@ -1,3 +1,72 @@
+async function loadBanner() {
+  try {
+    const res = await fetch("https://yourapi.com/api/banners"); // replace with your API
+    const banners = await res.json();
+
+    const bannerEl = document.getElementById("banner");
+    const slidesEl = document.getElementById("slides");
+    const dotsEl = document.getElementById("dots");
+
+    // If no images, hide banner
+    if (!banners || banners.length === 0) {
+      bannerEl.style.display = "none";
+      return;
+    }
+
+    // Otherwise, show banner
+    bannerEl.style.display = "block";
+
+    // Insert slides dynamically
+    banners.forEach((banner, i) => {
+      const slide = document.createElement("div");
+      slide.className = "slide";
+      if (i === 0) slide.classList.add("active");
+      slide.innerHTML = `<img src="${banner.image}" alt="Banner ${i+1}">`;
+      slidesEl.appendChild(slide);
+
+      // Create dot
+      const dot = document.createElement("button");
+      if (i === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => showSlide(i));
+      dotsEl.appendChild(dot);
+    });
+
+    const slides = document.querySelectorAll(".slide");
+    const dots = dotsEl.querySelectorAll("button");
+    let index = 0;
+
+    function showSlide(i) {
+      index = i;
+      const offset = -i * 100;
+      slidesEl.style.transform = `translateX(${offset}%)`;
+
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[i].classList.add("active");
+    }
+
+    function autoSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    setInterval(autoSlide, 4000); // every 4s
+
+  } catch (err) {
+    console.error("Error loading banners:", err);
+    document.getElementById("banner").style.display = "none";
+  }
+}
+
+// Call on page load
+loadBanner();
+
+
+
+
+
+
+
+
 async function loadProducts() {
   try {
     const response = await fetch("https://sakhiculapi.vercel.app/api/product");
@@ -374,12 +443,12 @@ function openProductDetails(index) {
   }, 1000); // 1 second delay
 }
 
-let selectedProduct = null;
- function openProductDetail(name, desc, price, img ,_id ,size,length) {
+var selectedProduct = null;
+ function openProductDetail(name, desc, price, img , _id , size, length) {
       document.getElementById("detailName").innerText = name;
       document.getElementById("detailDescription").innerText = desc;
-      document.getElementById("detailsize").innerText = size;
-      document.getElementById("detaillength").innerText = length;
+      document.getElementById("detailSize").innerText = size;
+      document.getElementById("detailLength").innerText = length;
       document.getElementById("detailPrice").innerText = "₹" + price;
       document.getElementById("detailImage").src = img;
 
