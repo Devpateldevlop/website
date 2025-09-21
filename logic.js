@@ -35,14 +35,23 @@ async function loadBanner() {
     const dots = dotsEl.querySelectorAll("button");
     let index = 0;
 
-    function showSlide(i) {
-      index = i;
-      const offset = -i * 100;
-      slidesEl.style.transform = `translateX(${offset}%)`;
+    // function showSlide(i) {
+    //   index = i;
+    //   const offset = -i * 100;
+    //   slidesEl.style.transform = `translateX(${offset}%)`;
 
-      dots.forEach(dot => dot.classList.remove("active"));
-      dots[i].classList.add("active");
-    }
+    //   dots.forEach(dot => dot.classList.remove("active"));
+    //   dots[i].classList.add("active");
+    // }
+
+    function showSlide(i) {
+  index = i;
+  slidesEl.style.transform = `translateX(-${i * 100}%)`;
+
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[i].classList.add("active");
+}
+
 
     function autoSlide() {
       index = (index + 1) % slides.length;
