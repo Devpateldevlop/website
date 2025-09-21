@@ -1,6 +1,6 @@
 async function loadBanner() {
   try {
-    const res = await fetch("https://yourapi.com/api/banners"); // replace with your API
+    const res = await fetch("https://yourapi.com/api/banner"); // replace with your API
     const banners = await res.json();
 
     const bannerEl = document.getElementById("banner");
