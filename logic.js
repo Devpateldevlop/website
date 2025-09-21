@@ -367,8 +367,8 @@ function placeorder() {
   message += "\n✅ Please confirm my order.\n\n🙏 Thank you!";
 
   let encodedMessage = encodeURIComponent(message);
-  // let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
-  let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
+  let whatsappUrl = `https://wa.me/917874100238?text=${encodedMessage}`;
+  // let whatsappUrl = `https://wa.me/919601091060?text=${encodedMessage}`;
 
   window.open(whatsappUrl, "_blank");
 
