@@ -179,7 +179,7 @@ body {
   line-height: 1.6;
   /* background: linear-gradient(90deg, rgba(248, 211, 131, 0.85) 0%, rgba(255, 215, 176, 0.925) 100%); */
  
-  background: url('./wallp1.jpg') no-repeat center center fixed;
+  background: url('./wallp3.jpg') no-repeat center center fixed;
   background-size: 100% 100%, cover;
   color: #333;
 }
