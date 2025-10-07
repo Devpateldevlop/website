@@ -177,8 +177,9 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  background: linear-gradient(90deg, rgba(248, 211, 131, 0.85) 0%, rgba(255, 215, 176, 0.925) 100%);
-  /* background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') no-repeat center center fixed; */
+  /* background: linear-gradient(90deg, rgba(248, 211, 131, 0.85) 0%, rgba(255, 215, 176, 0.925) 100%); */
+ 
+  background: url('./wallp1.jpg') no-repeat center center fixed;
   background-size: 100% 100%, cover;
   color: #333;
 }
@@ -188,7 +189,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,0.85);
+  background: rgb(255 255 255 / 62%);
   z-index: -1;
 }
 
@@ -1223,3 +1224,8 @@ margin-left: 100px;
     border-radius: 10px;
   }
 }
+
+
+
+
+
