@@ -628,7 +628,7 @@ body::before {
   justify-content: center;
   align-items: center;
   position:  sticky;
-  top: 71px; /* Initially placed 30px below the header */
+  top: 70px; /* Initially placed 30px below the header */
   left: 0;
   right: 0;
   z-index: 2; /* Below the header */
