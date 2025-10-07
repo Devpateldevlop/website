@@ -611,6 +611,7 @@ body::before {
   .header {
     font-size: 1rem;
     padding: 0rem 0;
+  
     position: fixed;
     z-index: 2;
     top: auto;
@@ -623,10 +624,11 @@ body::before {
 .categories {
   background: #f5efe7;
   display: flex;
+  /* border-top: 0.5px solid rgba(0, 0, 0, 0.619); */
   justify-content: center;
   align-items: center;
   position:  sticky;
-  top: 60px; /* Initially placed 30px below the header */
+  top: 71px; /* Initially placed 30px below the header */
   left: 0;
   right: 0;
   z-index: 2; /* Below the header */
