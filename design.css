@@ -178,8 +178,7 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  /* background: linear-gradient(90deg, rgba(248, 211, 131, 0.85) 0%, rgba(255, 215, 176, 0.925) 100%); */
- 
+  /* background: linear-gradient(90deg, #f5efe7 0%, rgba(255, 215, 176, 0.925) 100%); */
   background: url('./wallp3.jpg') no-repeat center center fixed;
   background-size: 100% 100%, cover;
   color: #333;
@@ -533,6 +532,9 @@ body::before {
 /* Categories: horizontal centered row that looks like your screenshot */
 .categories {
   display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   padding: 1rem 0.5rem;
@@ -542,7 +544,7 @@ body::before {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
   overflow-x: auto;
   padding: 0.5rem 0;
@@ -612,12 +614,45 @@ body::before {
     position: fixed;
     z-index: 2;
     top: auto;
+    
     /* margin-bottom: 227px; */
   }
- 
+
+
+/* Categories Styling */
+.categories {
+  background: #f5efe7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:  sticky;
+  top: 60px; /* Initially placed 30px below the header */
+  left: 0;
+  right: 0;
+  z-index: 2; /* Below the header */
+  transition: top 0.3s ease; /* Smooth transition for position change */
+}
+
+/* Category Grid Styling */
+.category-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
   .categories, .products {
     padding: 0.7rem 0.3rem;
+   
   }
+  
   .category-card {
     font-size: 0.85rem;
     min-width: 70px;
@@ -974,7 +1009,7 @@ margin-left: 100px;
   width: 100%;
   height: 100%;
 
-  /* ✅ Add your logo as background */
+  /* âœ… Add your logo as background */
   background: 
     linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), 
     url("./logo.jpg"); /* your uploaded logo path */
@@ -1169,7 +1204,9 @@ margin-left: 100px;
   .banner {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  height: 50%;
+  max-height: 400px;
+  max-width: 1000px;
   margin: 0 auto 20px auto;
   overflow: hidden;
   border-radius: 12px;
