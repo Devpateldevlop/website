@@ -995,12 +995,15 @@ margin-left: 100px;
 
 /* Silk flowing lines animation */
 .silk-lines {
+  justify-content: center;
+  align-items: center;
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
 }
 
 .silk-lines div {
+
   margin-top: 500px;
   width: 6px;
   height: 40px;
