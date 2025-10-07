@@ -90,7 +90,7 @@ async function loadProducts() {
   } finally {
     setTimeout(() => {
       hideLoader();
-    }, 2000);
+    }, 1000);
   }
 }
 window.addEventListener("DOMContentLoaded", initializePage);
@@ -131,7 +131,7 @@ async function initializePage() {
   } finally {
     setTimeout(() => {
       hideLoader();
-    }, 2000);
+    }, 1000);
   }
 }
 
